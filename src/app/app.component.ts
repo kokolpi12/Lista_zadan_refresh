@@ -6,5 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Lista_zadan_refresh';
+
+  tasksList: Array<string> = [];
+  tasksDone: Array<string> = [];
+
+  add(task: string): void{
+
+    this.tasksList.push(task);
+  }
+
+  remove(task: string): void{
+    
+    let index: number = this.tasksList.indexOf(task);
+    this.tasksList.splice(index, 1)
+  }
+
+  done(task: string): void{
+
+    this.tasksDone.push(task);
+    this.remove(task);
+  }
 }
+
