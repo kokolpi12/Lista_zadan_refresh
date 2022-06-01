@@ -1,9 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-to-do',
   templateUrl: './to-do.component.html',
-  styleUrls: ['./to-do.component.css']
+  styleUrls: ['./to-do.component.css'],
+  //Enkapsulacja CSS
+  encapsulation: ViewEncapsulation.Emulated,//None
 })
 export class ToDoComponent implements OnInit {
 
@@ -30,4 +32,8 @@ export class ToDoComponent implements OnInit {
     this.emitDone.emit(task);
   }
 
+  getColor(): string{
+
+    return this.tasksList.length >= 5 ? 'red' : 'green';
+  }
 }
