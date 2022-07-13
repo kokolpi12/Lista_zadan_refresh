@@ -2,9 +2,9 @@
   <p [ngStyle]="{color: getColor()}">Zadań do wykonania: {{tasksList.length}}</p>
   <ng-container *ngIf="tasksList.length > 0; else noTasks">
     <ul>
-      <li *ngFor="let task of tasksList; let i = index" 
+      <li appDate [date]="task.created" *ngFor="let task of tasksList | sortName; let i = index"
       [ngClass]="{'odd-li' : i%2==0, 'last-li' : tasksList.length===1}">
-        {{task}}
+        {{task.name | transformTask: '!'}}
         <button type="button" class="btn btn-danger" (click)="remove(task)">Usuń</button>
         <button type="button" class="btn btn-success" (click)="done(task)">Zrobione</button>
       </li>
@@ -13,6 +13,6 @@
 </div>
 
 <ng-template #noTasks>
-    Brak zdań, masz czas wolny
-  </ng-template>
+  Brak zdań, masz czas wolny
+</ng-template>
   

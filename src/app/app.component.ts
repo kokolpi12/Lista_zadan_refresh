@@ -1,5 +1,6 @@
 import { TasksService } from './services/tasks.service';
 import { Component, OnInit } from '@angular/core';
+import { Task } from './models/task';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +11,21 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent implements OnInit{
 
-  tasksList: Array<string> = [];
-  tasksDone: Array<string> = [];
+  tasksList: Array<Task> = [];
+  tasksDone: Array<Task> = [];
 
-  add(task: string): void{
+  add(task: Task): void{
 
     this.tasksList.push(task);
   }
 
-  remove(task: string): void{
+  remove(task: Task): void{
     
     let index: number = this.tasksList.indexOf(task);
     this.tasksList.splice(index, 1)
   }
 
-  done(task: string): void{
+  done(task: Task): void{
 
     this.tasksDone.push(task);
     this.remove(task);
